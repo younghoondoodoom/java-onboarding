@@ -12,7 +12,7 @@ public class Problem7 {
         List<String> userRelations = relationMap.get(user);
 
         addRelateScore(relationMap, userRelations, scoreBoard);
-
+        addScore(scoreBoard, userRelations, visitors, 1);
         return null;
     }
 
