@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.Arrays;
 import java.util.List;
 
 class Problem1 {
@@ -7,6 +8,9 @@ class Problem1 {
         if (!isValidData(pobi) || !isValidData(crong)) {
             return -1;
         }
+
+        int pobiMax = getScore(pobi);
+        int crongMax = getScore(crong);
 
         return 0;
     }
@@ -22,5 +26,20 @@ class Problem1 {
             return false;
         }
         return list.get(0) + 1 == list.get(1);
+    }
+
+    private static int getScore(List<Integer> list) {
+        return Math.max(getMax(list.get(0)), getMax(list.get(1)));
+    }
+
+    private static int getMax(Integer num) {
+        int[] ints =
+                Arrays.stream(String.valueOf(num).split("")).mapToInt(Integer::parseInt).toArray();
+        int sum = Arrays.stream(ints).sum();
+        int mul = 1;
+        for (int i : ints) {
+            mul *= i;
+        }
+        return Math.max(sum, mul);
     }
 }
