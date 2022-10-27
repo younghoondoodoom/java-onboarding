@@ -13,7 +13,14 @@ public class Problem7 {
 
         addRelateScore(relationMap, userRelations, scoreBoard);
         addScore(scoreBoard, userRelations, visitors, 1);
-        return null;
+
+        List<String> result = new ArrayList<>(scoreBoard.keySet());
+        result.sort((x, y) -> scoreBoard.get(y) - scoreBoard.get(x));
+
+        if (result.size() > 5) {
+            result.subList(0, 5);
+        }
+        return result;
     }
 
     private static void addRelateScore(Map<String, List<String>> relationMap,
