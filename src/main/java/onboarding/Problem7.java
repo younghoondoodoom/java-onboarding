@@ -6,10 +6,38 @@ public class Problem7 {
     public static List<String> solution(String user,
                                         List<List<String>> friends,
                                         List<String> visitors) {
+        Map<String, Integer> scoreBoard = new HashMap<>();
+
         Map<String, List<String>> relationMap = createRelation(friends);
         List<String> userRelations = relationMap.get(user);
 
+        addRelateScore(relationMap, userRelations, scoreBoard);
+
         return null;
+    }
+
+    private static void addRelateScore(Map<String, List<String>> relationMap,
+                                       List<String> userRelations,
+                                       Map<String, Integer> scoreBoard) {
+        for (String relation : userRelations) {
+            List<String> fof = relationMap.get(relation);
+            addScore(scoreBoard, userRelations, fof, 10);
+        }
+    }
+
+    private static void addScore(Map<String, Integer> scoreBoard,
+                                 List<String> banList, List<String> targets,
+                                 int score) {
+        for (String target : targets) {
+            if (banList.contains(target)) {
+                continue;
+            }
+            if (scoreBoard.containsKey(target)) {
+                scoreBoard.replace(target, scoreBoard.get(target) + score);
+            } else {
+                scoreBoard.put(target, score);
+            }
+        }
     }
 
     private static Map<String, List<String>> createRelation(List<List<String>> friends) {
