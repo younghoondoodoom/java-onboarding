@@ -6,7 +6,10 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         Set<String> resultSet = removeDup(forms);
 
-        return null;
+        List<String> result = new ArrayList<>(List.copyOf(resultSet));
+        result.sort(Comparator.naturalOrder());
+
+        return result;
     }
 
     private static Set<String> removeDup(List<List<String>> forms) {
