@@ -1,13 +1,16 @@
 package onboarding;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class Problem5 {
     public static List<Integer> solution(int money) {
-        List<Integer> answer = Collections.emptyList();
-        return answer;
+        ArrayList<Integer> result = new ArrayList<>(9);
+        for (int i = 0; i < 9; i++) {
+            result.add(0);
+        }
+        cntBills(money, result);
+        return result;
     }
 
     private static void cntBills(int money, ArrayList<Integer> result) {
