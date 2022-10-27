@@ -10,6 +10,7 @@ public class Problem7 {
 
         Map<String, List<String>> relationMap = createRelation(friends);
         List<String> userRelations = relationMap.get(user);
+        userRelations.add(user);
 
         addRelateScore(relationMap, userRelations, scoreBoard);
         addScore(scoreBoard, userRelations, visitors, 1);
