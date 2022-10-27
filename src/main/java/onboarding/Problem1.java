@@ -12,7 +12,13 @@ class Problem1 {
         int pobiMax = getScore(pobi);
         int crongMax = getScore(crong);
 
-        return 0;
+        if (pobiMax > crongMax) {
+            return 1;
+        } else if (pobiMax < crongMax) {
+            return 2;
+        } else {
+            return 0;
+        }
     }
 
     private static boolean isValidData(List<Integer> list) {
